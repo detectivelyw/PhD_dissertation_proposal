@@ -1,0 +1,89 @@
+%\documentclass[letterpaper,onecolumn,11pt]{article}
+\documentclass[letterpaper, onecolumn, 10pt]{article}
+\usepackage{amsfonts,amsmath}
+\usepackage{color,colordvi}
+\usepackage{textcomp}
+\usepackage{epsfig}
+\usepackage{url}
+\usepackage{mdwlist}
+\usepackage{subfigure}
+\usepackage{times}
+%\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xspace}
+\usepackage{varwidth}
+
+\usepackage{enumitem}
+
+\usepackage{geometry}
+\geometry{margin=.8in}
+\usepackage{titlesec}
+%\setlength{\textfloatsep}{20pt}
+\titlespacing{\section}{0pt}{.1in}{.1in}
+\titlespacing{\subsection}{0pt}{.1in}{.05in}
+\titlespacing{\subsubsection}{0pt}{.05in}{-\parskip}
+
+\usepackage{multirow}
+\usepackage{algorithm}
+\newcommand{\codecomment}[1]{\textcolor[rgb]{0.133,0.445,0.133}{// #1}}
+\usepackage[noend]{algpseudocode}
+\renewcommand\algorithmicindent{.8em}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{makecell}
+
+\usepackage{url}
+\usepackage{breakurl}
+\usepackage{boldline}
+
+\def\UrlBreaks{\do\/\do-\do_}
+
+\newcommand{\tes}[1]{{\textbf{\footnotesize #1}}}
+\newcommand{\ter}[1]{{\footnotesize #1}}
+
+% allow for more floats in a page
+\setcounter{totalnumber}{50} \setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50} \setcounter{dbltopnumber}{50}
+\author{Yiwen Li}
+
+\newcommand{\eat}[1]{}
+
+\begin{document}
+
+\date{}
+
+\title{\Large \bf Lind: Secure software isolation}
+
+\maketitle
+
+\begin{abstract}
+
+The modern software development supply chain typically includes source code
+    management, verify, build, package, and distribution procedures. % REREAD
+    The security of this supply chain is dramatically overlooked
+    today. Simply put, there are no mechanisms in place for someone who
+    downloads software to ensure that 1) the software was developed with
+    appropriate coding processes (e.g., code review) in place, 2) testing was
+    run against this version of the software 3) a malicious party has not
+    inserted or removed code or 4) even that the code was written by the right
+    developers. Many recent incidents show that attacks can happen at any point
+    in the software supply chain affecting millions of users worldwide
+    ~\cite{aurora-scm, linux-backdoor-2003, homakov-hack-again, cloud-spaces,
+    linux, redhat-hacked, adobe-hack, proftpd-hack, github-hacked-millions}.
+
+Through the course of my PhD studies, I will create, design and push for the
+    adoption of \emph{in-toto}, a framework to deploy and protect software
+    supply chains from tampering by malicious actors.
+
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/goals}
+\input{sections/future-work}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}
+
