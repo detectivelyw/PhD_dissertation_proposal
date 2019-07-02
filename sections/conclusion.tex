@@ -1,0 +1,11 @@
+\paragraph{Conclusion}\mbox{}\\
+
+During my PhD study, the research problem that I have been focused on is that virtual machines and containers have security concerns of 
+triggering zero-day bugs in a vulnerable host operating system kernel. To solve this problem, we first studied and developed a ``popular paths'' metric 
+that revealed a strong correlation between the popularity of kernel code and the likelihood that it contains security bugs. We then designed and developed 
+a system to apply our popular paths metric to the LinuxKit virtual machine. As our current on-going work, we have obtained the popular paths data for the LinuxKit VM, 
+and instrumented the Linux kernel source code based on this data. We are now running our testing containers on the modified host kernel, and verifying that 
+real-world popular Docker containers can run their default workload using the popular paths. Next, we will extend our current work to automate the application of our 
+popular paths metric across multiple kernel versions. We also plan to automate the profiling of popular paths data on a large-scale dataset of containers. Our hope is that 
+by the end of my PhD study, we will be able to demonstrate that the popular paths metric is an effective solution to enhancing container security by avoiding kernel vulnerabilities, 
+and can be used in practice to benefit both security researchers and container users. 

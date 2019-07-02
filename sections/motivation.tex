@@ -1,0 +1,18 @@
+\paragraph{Motivation}\mbox{}\\
+
+Operating system kernels form a critical trusted computing base in modern operating systems such as Linux.  
+Bugs in the kernel may allow untrusted user code to escalate privileges, and potentially compromise the entire system, causing severe security problems to the system and any program running on it. 
+Despite the importance of kernel security, commodity OS kernels such as Linux still have a large number of bugs. There were 176 CVE vulnerabilities found in the Linux kernel in 2018, and 67 vulnerabilities 
+confirmed in the first six months of 2019 \cite{kernel_cves}. 
+
+Lightweight virtualization systems (or containers) have recently become a popular way to deploy and run applications with their dependencies. 
+In fact, one industry survey suggesting the technology could become a \$2.7 billion market by 2020 \cite{451-Research}.  
+This wide-spread adoption of containers, such as Docker \cite{Docker} and LinuxKit \cite{LinuxKit} can be attributed to 
+the perceived isolation and security they provide to the user programs running inside of them. 
+However, this perception may be false, as it is possible to trigger zero-day kernel bugs from inside of a container. 
+And since the kernel is shared by containers and the host system, exploitation of such bugs could lead to severe security problems, 
+such as privilege escalation. For example, an exploit against CVE-2016-5195 (the “Dirty COW” vulnerability) was demonstrated that 
+allowed attackers to escape from a Docker container and access files on the host system \cite{Dirty_COW}. 
+
+To prevent containers from triggering security vulnerabilities in the host kernel, we need to have an effective way of knowing where bugs are located first, and then 
+use our knowledge of the bug locations to monitor and prevent user programs from reaching these risky code paths. 

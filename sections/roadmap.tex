@@ -1,0 +1,28 @@
+\paragraph{Roadmap}\mbox{}
+
+\paragraph{\textit{\textbf{Step one: finished}}}\mbox{}\\
+The first step in our work is to find an effective metric in predicting where bugs are likely to be located. This can help us understand how to avoid triggering security vulnerabilities, 
+and thus reduce the attack surface. Finding a good metric lays the foundation of our work. 
+
+In our previous research work, we have discovered a powerful correlation between the popularity of a kernel code path—how often it is encountered during the course of normal execution—and 
+the likelihood that it contains a security flaw \cite{Lock-in-Pop}. In a study of 40 Linux kernel bugs, we found that just one occurred in one of these ``popular'' paths. 
+Furthermore, this correlation was statistically significant $(p < .01)$. Our popular paths metric is therefore a powerful predictor of where security-critical bugs are likely to occur. 
+The study and development of our ``popular paths" metric has published in our ``Lock-in-Pop'' paper at the USENIX ATC '17 \cite{Lock-in-Pop}.  
+
+\paragraph{\textit{\textbf{Step two: on-going}}}\mbox{}\\
+In our current on-going research, we are studying the feasibility of using the popular paths metric to secure the LinuxKit virtual machine (VM). 
+This entails first, finding a way to identify and capture the popular paths for the LinuxKit VM, 
+then, demonstrating that existing containers could operate their normal / default workload on these paths, 
+and finally, developing a method to warn users away from code found in the less-used paths. 
+We have already developed tools to automatically collect the popular paths data for LinuxKit by running the top 100 popular Docker containers in it. 
+Next, we designed and implemented a system to automatically instrument the Linux kernel based on our popular paths data. Our Secure Logging System inserted warning messages 
+at the beginning of each basic block in the unpopular paths, and produced a Secure Logging Kernel. Our modified Linux kernel monitors the use of kernel paths by untrusted user applications, 
+and will output warnings whenever there is an attempt to access the unpopular paths. Currently, we are testing to get the exact numbers of how many unpopular paths will be accessed when running 
+popular Docker containers with our instrumented kernel. We expect to see very small percentage of unpopular paths used by popular containers. 
+
+\paragraph{\textit{\textbf{Step three: future work}}}\mbox{}\\
+Our final step is to refine and extend our current system to fully automate the application of our popular paths metric, and make it easier to utilize our metric on multiple kernel versions. 
+Currently, we mainly worked on the Linux kernel version 4.14.24. And we have also gathered the popular paths data, and instrumented the source code for the Linux kernel version 4.9.86. 
+We want to make our tool be able to automatically work on multiple existing kernel versions and new releasing versions. Moreover, there are more than two million available Docker images 
+on Docker Hub \cite{DockerHub}. And we want to make it easy to automatically profiling the kernel trace and obtaining the popular paths data for these containers by using our system, 
+so that it can provide large-scale dataset that may benefit our research community. 

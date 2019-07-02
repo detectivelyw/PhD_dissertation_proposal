@@ -1,5 +1,5 @@
 %\documentclass[letterpaper,onecolumn,11pt]{article}
-\documentclass[letterpaper, onecolumn, 10pt]{article}
+\documentclass[letterpaper, onecolumn, 12pt]{article}
 \usepackage{amsfonts,amsmath}
 \usepackage{color,colordvi}
 \usepackage{textcomp}
@@ -53,36 +53,27 @@
 
 \date{}
 
-\title{\Large \bf Lind: Secure software isolation}
+\title{\Large \bf Lind: Enhancing Container Security by Leveraging the Popular Paths}
 
 \maketitle
 
 \begin{abstract}
 
-The modern software development supply chain typically includes source code
-    management, verify, build, package, and distribution procedures. % REREAD
-    The security of this supply chain is dramatically overlooked
-    today. Simply put, there are no mechanisms in place for someone who
-    downloads software to ensure that 1) the software was developed with
-    appropriate coding processes (e.g., code review) in place, 2) testing was
-    run against this version of the software 3) a malicious party has not
-    inserted or removed code or 4) even that the code was written by the right
-    developers. Many recent incidents show that attacks can happen at any point
-    in the software supply chain affecting millions of users worldwide
-    ~\cite{aurora-scm, linux-backdoor-2003, homakov-hack-again, cloud-spaces,
-    linux, redhat-hacked, adobe-hack, proftpd-hack, github-hacked-millions}.
-
-Through the course of my PhD studies, I will create, design and push for the
-    adoption of \emph{in-toto}, a framework to deploy and protect software
-    supply chains from tampering by malicious actors.
+Containers, such as Docker and LinuxKit, are widely used because of the perceived isolation and security they provide against the potentially malicious or buggy user programs running inside of them. 
+However, this perception may be false. It is possible to trigger zero-day kernel bugs from inside of a container, which could lead to such security problems as privilege escalation. 
+Containers remain vulnerable because they are allowed  access to rarely executed paths in the host operating system kernel that often contains bugs. 
+To solve this problem, we first developed a ``popular paths'' metric that revealed a strong correlation between the popularity of kernel code and the likelihood that it contains security bugs. 
+Now we are applying our popular paths metric to real-world container systems, Docker and LinuxKit. We will further extend our system to automate the application of the popular paths metric 
+to multiple kernel versions, and large-scale container applications. 
 
 \end{abstract}
 
-\input{sections/introduction}
+\input{sections/motivation}
 \input{sections/goals}
-\input{sections/future-work}
+\input{sections/roadmap}
+\input{sections/conclusion}
 
-\bibliographystyle{abbrv}
+\bibliographystyle{acm}
 \bibliography{references}
 
 \end{document}
